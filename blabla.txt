@@ -1,0 +1,4 @@
+              for(var i = 0; i < this.selected.length; i++)
+              {
+              this.selected[i].splice(0, i);
+              }
