@@ -79,21 +79,24 @@
   <v-btn v-on:click="deleteArticle()" dark color="red" large v-if="selected.length != 0">
                <v-icon large left>remove_circle</v-icon> Supprimer les articles selectionnés
               </v-btn>
-</template>
-
-
+  </template>
       </v-container>
     </v-card-text>
   </v-card>
 </template>
 
 <script>
+
+import store from './ArticlesStore'
+
 export default {
-  data() {
+
+  store: store,
+  data () {
     return {
-      newTitle: "",
-      newText: "",
-      newImg: "",
+      newTitle: '',
+      newText: '',
+      newImg: '',
       newDate: new Date().toLocaleString(),
       newId: 0,
         search: '',
