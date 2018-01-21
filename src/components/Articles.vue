@@ -148,7 +148,12 @@ export default {
           this.selected.forEach(element => {
               for(var i = 0; i < this.selected.length; i++)
               {
-              displayNone.classList.add("hide");
+                // solution naze qui marche à 2%
+                this.selected[i].name = "";
+                this.selected[i].text = "";
+                this.selected[i].img = "";
+                this.selected[i].date = "";
+              // displayNone.classList.add("hide"); mauvaise idée et en plus ne marche pas
               }
           });
 
