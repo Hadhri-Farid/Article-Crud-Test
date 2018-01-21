@@ -68,7 +68,7 @@
         ></v-checkbox>
       </td>
       <td>{{ props.item.name }}</td>
-      <td class="text-xs-right">{{ props.item.text }}</td>
+      <td class="text-xs-right" id="sucess">{{ props.item.text }}</td>
       <td class="text-xs-right"><img :src="newImg"></td>
       <td class="text-xs-right">{{ props.item.date }}</td>
       <v-btn fab dark small color="primary">
@@ -90,7 +90,14 @@
 import store from './ArticlesStore'
 
 export default {
-
+  updated: function () {
+    this.$nextTick(function () {
+    // Ce code va être exécuté seulement
+    // une fois le rendu de la vue entière terminé
+    const displayNone = document.getElementsByClassName('hide');
+    console.log(displayNone);
+  })
+},
   store: store,
   data () {
     return {
@@ -141,17 +148,14 @@ export default {
           this.selected.forEach(element => {
               for(var i = 0; i < this.selected.length; i++)
               {
-              this.selected[i].name = "";
-              this.selected[i].text = "";
-              this.selected[i].img = "";
-              this.selected[i].date = "";
+              displayNone.classList.add("hide");
               }
           });
 
       } else {
           console.log("fail");
       }
-  }
+    },
   }
 };
 </script>
@@ -164,5 +168,9 @@ li {
 img {
     width: 50px;
     height: 50px;
+}
+
+.hide {
+  display: none;
 }
 </style>

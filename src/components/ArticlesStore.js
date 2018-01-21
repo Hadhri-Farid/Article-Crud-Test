@@ -2,20 +2,15 @@ import Vuex from 'vuex'
 import 'vue-use-vuex'
 
 const state = {
-
   items: [{
-    name: 'Article1',
-    text: 'Salut',
-    img: 'img de chat'
+    name: 'Article1'
   }]
 }
 
 const mutations = {
-  ADD_ITEMS: (state, name, text, img) => {
+  ADD_ITEM: (state, name) => {
     state.items.push({
-      name: name,
-      text: text,
-      img: img
+      name: name
     })
   }
 }
