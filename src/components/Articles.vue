@@ -65,7 +65,8 @@
           color="primary"
           hide-details
           v-model="props.selected"
-        ></v-checkbox>
+        >
+        </v-checkbox>
       </td>
       <td>{{ props.item.name }}</td>
       <td class="text-xs-right" id="sucess">{{ props.item.text }}</td>
@@ -77,8 +78,8 @@
     </template>
   </v-data-table>
   <v-btn v-on:click="deleteArticle()" dark color="red" large v-if="selected.length != 0">
-               <v-icon large left>remove_circle</v-icon> Supprimer les articles selectionnés
-              </v-btn>
+    <v-icon large left>remove_circle</v-icon> Supprimer les articles selectionnés
+  </v-btn>
   </template>
       </v-container>
     </v-card-text>
@@ -94,10 +95,10 @@ export default {
     this.$nextTick(function () {
     // Ce code va être exécuté seulement
     // une fois le rendu de la vue entière terminé
-    const displayNone = document.getElementsByClassName('hide');
-    console.log(displayNone);
-  })
-},
+      const displayNone = document.getElementsByClassName('hide')
+      console.log(displayNone)
+    })
+  },
   store: store,
   data () {
     return {
@@ -106,65 +107,63 @@ export default {
       newImg: '',
       newDate: new Date().toLocaleString(),
       newId: 0,
-        search: '',
-        selected: [],
-        headers: [
-          {
-            text: 'Titre',
-            align: 'left',
-            sortable: false,
-            value: 'name'
-          },
-          {
-            text: 'Description',
-            sortable: false
-            },
-          {
-            text: 'Images',
-            sortable: false
-            },
-          {
-              text: 'Date de création',
-              sortable: true,
-          }
-        ],
-        items: [],
-      };
+      search: '',
+      selected: [],
+      headers: [
+        {
+          text: 'Titre',
+          align: 'left',
+          sortable: false,
+          value: 'name'
+        },
+        {
+          text: 'Description',
+          sortable: false
+        },
+        {
+          text: 'Images',
+          sortable: false
+        },
+        {
+          text: 'Date de création',
+          sortable: true
+        }
+      ],
+      items: []
+    }
   },
 // Ok donc il faut completement supprimer les v-model il ne répond pas à la problematique, voilà pourquoi il faut utiliser Vuex afin de faire passer les infos
 // par contre je n'arrive pas à savoir si vuex à un rapport avec la bdd ou si les deux ne communiquent pas entre eux
   methods: {
-    addArticle() {
-    this.newId++;
+    addArticle () {
+      this.newId++
       this.items.push({
         name: this.newTitle,
         text: this.newText,
         img: this.newImg,
         date: this.newDate,
-        id : this.newId
-      });
-      console.log(this.newId);
+        id: this.newId
+      })
+      console.log(this.newId)
     },
-      deleteArticle() {
-      if (this.selected.length != 0) {
-          this.selected.forEach(element => {
-              for(var i = 0; i < this.selected.length; i++)
-              {
+    deleteArticle () {
+      if (this.selected.length !== 0) {
+        this.selected.forEach(element => {
+          for (var i = 0; i < this.selected.length; i++) {
                 // solution naze qui marche à 2%
-                this.selected[i].name = "";
-                this.selected[i].text = "";
-                this.selected[i].img = "";
-                this.selected[i].date = "";
+            this.selected[i].name = ''
+            this.selected[i].text = ''
+            this.selected[i].img = ''
+            this.selected[i].date = ''
               // displayNone.classList.add("hide"); mauvaise idée et en plus ne marche pas
-              }
-          });
-
+          }
+        })
       } else {
-          console.log("fail");
+        console.log('fail')
       }
-    },
+    }
   }
-};
+}
 </script>
 
 <style scoped>
