@@ -131,6 +131,8 @@ export default {
         items: [],
       };
   },
+// Ok donc il faut completement supprimer les v-model il ne répond pas à la problematique, voilà pourquoi il faut utiliser Vuex afin de faire passer les infos
+// par contre je n'arrive pas à savoir si vuex à un rapport avec la bdd ou si les deux ne communiquent pas entre eux
   methods: {
     addArticle() {
     this.newId++;
